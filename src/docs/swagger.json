@@ -1,0 +1,119 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Micro Notification API - Mirantes Technologic",
+    "description": "Microsservice Notification API, documentation for developers",
+    "version": "1.0.1",
+    "contact": {
+      "email": "herlander.bento@mirantes.io"
+    }
+  },
+  "paths": {
+    "/v1/notification": {
+      "post": {
+        "tags": ["Notification"],
+        "summary": "Notification",
+        "description": "Notification",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "recipientId": {
+                    "required": true,
+                    "type": "string",
+                    "example": "1b327ed1-a2bc-4cce-9d37-38a8964ce0ed"
+                  },
+                  "title": {
+                    "required": true,
+                    "type": "string",
+                    "example": "some title"
+                  },
+                  "content": {
+                    "required": true,
+                    "type": "string",
+                    "example": "some content"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "recipientId": {
+                          "type": "uuid",
+                          "example": "98559c82-71d9-42fc-81fc-30b404d571c8"
+                        },
+                        "title": {
+                          "type": "string",
+                          "example": "some title"
+                        },
+                        "content": {
+                          "type": "string",
+                          "example": "some content"
+                        },
+                        "createdAt": {
+                          "type": "date",
+                          "example": "2024-02-19T10:46:26.694Z"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errors": {
+                      "type": "object",
+                      "properties": {
+                        "recipientId": {
+                          "type": "string",
+                          "example": "recipientId is a required field"
+                        },
+                        "title": {
+                          "type": "string",
+                          "example": "title is a required field"
+                        },
+                        "content": {
+                          "type": "string",
+                          "example": "content is a required field"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-access-token"
+      }
+    }
+  }
+}

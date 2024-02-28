@@ -1,0 +1,80 @@
+## Create User
+
+POST http://localhost:3002/v1/pc/users
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "email": "johndoe@gmail.com",
+    "phone": "122211122",
+    "password": "some password"
+}
+
+###
+PATCH  http://localhost:3002/v1/users/830c9509-09cf-4a92-a799-68ac6c5a4db8/change-password
+Content-Type: application/json
+
+{
+    "oldPassword": "password121",
+    "password": "password1211"
+}
+
+###
+PATCH  http://localhost:3002/v1/pc/users/5659489d-25e6-4120-ac01-bacb31ddcd2c
+Content-Type: application/json
+
+{
+    "name": "António Campos Gabriel",
+    "email": "antiniocampos20@gmail.com",
+    "phone": "912345678",
+    "dateOfBirth": "08-05-2001",
+    "gender": "male"
+}
+
+
+###
+GET http://localhost:3002/v1/users
+Content-Type: application/json
+
+###
+POST http://localhost:3002/v1/auth/login
+Content-Type: application/json
+
+{
+    "email": "eugeniajoaogaieta@gmail.com",
+    "password": "meuDeus"
+}
+
+###
+POST http://localhost:3002/v1/password/reset?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4MzBjOTUwOS0wOWNmLTRhOTItYTc5OS02OGFjNmM1YTRkYjgiLCJleHBpcmVzSW4iOjEsImlhdCI6MTcwNzkwNDg3M30.YeyXbbkddW71z8J8VOPwE3xZEJ4158IZrheF-IHGDaY
+Content-Type: application/json
+
+{
+    "password": "password12",
+    "confirmPassword": "password12"
+}
+
+###
+POST http://localhost:3002/v1/users/verify-code
+Content-Type: application/json
+
+{
+    "code": "59892",
+    "email": "johndoe1@gmail.com"
+}
+
+###
+POST http://localhost:3002/v1/users/send-verify-code
+Content-Type: application/json
+
+{
+    "email": "johndoe@gmil.com"
+}
+
+
+###
+DELETE  http://localhost:3002/v1/logout
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYzllZTZkZC00YWE5LTQyMWYtYjQ0YS02YzFkYWViYTE0ZmIiLCJpYXQiOjE3MDgwOTUwOTd9.jD7hFcIJVEPl6q77rsPb1LHE6a6l8ndCdV47CJOcPiA
+
+
