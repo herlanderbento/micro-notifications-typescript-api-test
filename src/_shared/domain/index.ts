@@ -1,5 +1,6 @@
 // created from 'create-ts-index'
 
+// export * from './_errors';
 export * from './entities';
 export * from './errors';
 export * from './repository';

@@ -9,11 +9,13 @@
     }
   },
   "paths": {
-    "/v1/notification": {
+    "/v1/notifications": {
       "post": {
-        "tags": ["Notification"],
-        "summary": "Notification",
-        "description": "Notification",
+        "tags": [
+          "Notification"
+        ],
+        "summary": "Create notification",
+        "description": "Create notification",
         "requestBody": {
           "content": {
             "application/json": {
@@ -105,14 +107,191 @@
           }
         }
       }
-    }
-  },
-  "components": {
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "x-access-token"
+    },
+    "/v1/notifications/{recipientId}": {
+      "get": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "List all notification",
+        "description": "List all notifications",
+        "parameters": [
+          {
+            "name": "recipientId",
+            "in": "path",
+            "description": "recipientId",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "perPage",
+            "in": "query",
+            "description": "perPage",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "example": "1b327ed1-a2bc-4cce-9d37-38a8964ce0ed"
+                            },
+                            "recipientId": {
+                              "type": "string",
+                              "example": "19159459-4344-4f20-a4b5-5d343416b127"
+                            },
+                            "title": {
+                              "type": "string",
+                              "example": "O serviço da Mirantes"
+                            },
+                            "content": {
+                              "type": "string",
+                              "example": "oferecido sem custo financeiro, traduz instantaneamente palavras, frases e páginas da Web do português para mais de cem outros idiomas."
+                            },
+                            "readAt": {
+                              "type": "string",
+                              "example": "2024-02-29T13:35:34.853Z"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "example": "2024-02-29T13:35:34.853Z"
+                            }
+                          }
+                        },
+                        "total": {
+                          "type": "number",
+                          "example": "15"
+                        },
+                        "currentPage": {
+                          "type": "number",
+                          "example": "15"
+                        },
+                        "lastPage": {
+                          "type": "number",
+                          "example": "15"
+                        },
+                        "perPage": {
+                          "type": "number",
+                          "example": "15"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/notifications/{notificationId}/read/{recipientId}": {
+      "patch": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "Read notification",
+        "description": "Read notification",
+        "parameters": [
+          {
+            "name": "notificationId",
+            "in": "path",
+            "description": "notificationId",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "recipientId",
+            "in": "path",
+            "description": "recipientId",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "recipientId": {
+                          "type": "uuid",
+                          "example": "98559c82-71d9-42fc-81fc-30b404d571c8"
+                        },
+                        "title": {
+                          "type": "string",
+                          "example": "some title"
+                        },
+                        "content": {
+                          "type": "string",
+                          "example": "some content"
+                        },
+                        "createdAt": {
+                          "type": "date",
+                          "example": "2024-02-19T10:46:26.694Z"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errors": {
+                      "type": "object",
+                      "properties": {
+                        "notificationId": {
+                          "type": "string",
+                          "example": "notificationId is a required field"
+                        },
+                        "recipientId": {
+                          "type": "string",
+                          "example": "recipientId is a required field"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

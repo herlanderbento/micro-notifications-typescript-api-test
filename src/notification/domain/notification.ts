@@ -1,4 +1,4 @@
-import { AggregateRoot, EntityID, Optional } from "~/_shared/domain";
+import { AggregateRoot, EntityID, Optional } from '~/_shared/domain';
 
 export interface NotificationProps {
   recipientId: EntityID;
@@ -38,13 +38,14 @@ export class Notification extends AggregateRoot<NotificationProps> {
   }
 
   static create(
-    props: Optional<NotificationProps, "createdAt">,
+    props: Optional<NotificationProps, 'createdAt'>,
     id?: EntityID
   ): Notification {
     const notification = new Notification(
       {
         ...props,
         createdAt: props.createdAt ?? new Date(),
+        readAt: props.readAt ?? null,
       },
       id
     );

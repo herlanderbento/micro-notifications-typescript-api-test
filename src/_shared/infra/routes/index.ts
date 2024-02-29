@@ -7,6 +7,6 @@ router.get("/", (_, res) => {
   return res.json("Welcome to the Mirantes Notification api.");
 });
 
-router.use("/notification", notificationRoutes);
+router.use("/notifications", notificationRoutes);
 
 export { router };

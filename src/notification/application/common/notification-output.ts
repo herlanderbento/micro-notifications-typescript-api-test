@@ -3,7 +3,7 @@ import { Notification } from "~/notification/domain";
 
 export type NotificationOutput = {
   id: string;
-  recipientId: EntityID;
+  recipientId: EntityID | string;
   title: string;
   content: string;
   readAt?: Date | null;

@@ -1,8 +1,12 @@
-import { IUseCase } from "~/_shared/application";
-import { ReadNotificationInput } from "./read-notification.input";
-import { NotificationsRepository } from "~/notification/domain";
-import { NotAllowedError, NotficationNotFoundError } from "~/_shared/domain";
-import { NotificationOutput, NotificationOutputMapper } from "../../common";
+import { IUseCase } from '~/_shared/application';
+import { ReadNotificationInput } from './read-notification.input';
+import { Notification, NotificationsRepository } from '~/notification/domain';
+import {
+  // NotAllowedError,
+  NotFoundError,
+  // NotficationNotFoundError,
+} from '~/_shared/domain';
+import { NotificationOutput, NotificationOutputMapper } from '../../common';
 
 export class ReadNotificationUseCase
   implements IUseCase<ReadNotificationInput, ReadNotificationOutput>
@@ -15,11 +19,11 @@ export class ReadNotificationUseCase
     );
 
     if (!notification) {
-      throw new NotficationNotFoundError();
+      throw new NotFoundError(input.notificationId, Notification);
     }
 
     if (input.recipientId !== notification.recipientId.toString()) {
-      throw new NotAllowedError();
+      throw new NotFoundError(input.recipientId, Notification)
     }
 
     notification.read();

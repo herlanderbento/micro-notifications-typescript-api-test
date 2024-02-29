@@ -38,17 +38,10 @@ export class NotificationMongoRepository implements NotificationsRepository {
     return model ? NotificationModelMapper.toEntity(model) : null;
   }
 
-  findManyByRecipientId(
-    recipientId: string,
-    params: PaginationParams
-  ): Promise<Notification[]> {
-    throw new Error("Method not implemented.");
-  }
-
-  async findManyByRecipientsId(
+  async findManyByRecipientId(
     recipientId: string,
     props: NotificationSearchParams
-  ): Promise<NotificationSearchResult | null> {
+  ): Promise<NotificationSearchResult> {
     const skip = (props.page - 1) * props.perPage;
     const limit = props.perPage;
 
