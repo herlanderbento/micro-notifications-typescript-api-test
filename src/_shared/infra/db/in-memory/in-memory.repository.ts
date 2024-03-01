@@ -1,5 +1,5 @@
+import { NotFoundError } from '~/_shared/domain';
 import { Entity } from '~/_shared/domain/entities/entity';
-import { NotFoundError } from '~/_shared/domain/_errors';
 import { IRepository } from '~/_shared/domain/repository/repository-interface';
 import { EntityID } from '~/_shared/domain/value-object/entity-id.vo';
 

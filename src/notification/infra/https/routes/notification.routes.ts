@@ -11,9 +11,12 @@ notificationRoutes.post('/', (req, res) =>
   sendNotificationFactory.handle(req, res)
 );
 
-notificationRoutes.patch('/:notificationId/read/:recipientId', (req, res) => {
-  readNotificationFactory.handle(req, res);
-});
+notificationRoutes.patch(
+  '/:notificationId/read/:recipientId',
+  (req, res, next) => {
+    readNotificationFactory.handle(req, res, next);
+  }
+);
 
 notificationRoutes.get('/:recipientId', (req, res) => {
   listNotificationsFactory.handle(req, res);

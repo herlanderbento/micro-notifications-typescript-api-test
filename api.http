@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 ###
-PATCH  http://localhost:3005/v1/notifications/a93af6c5-af1f-4148-b878-7c4218204cc/read/1b327ed1-a2bc-4cce-9d37-38a8964ce0ed
+PATCH  http://localhost:3005/v1/notifications/10d95d50-32ea-4188-85e9-1c5338f353d8/read/1b327ed1-a2bc-4cce-9d37-38a8964ce0ed
 Content-Type: application/json
 
 ###

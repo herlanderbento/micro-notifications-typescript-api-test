@@ -1,6 +1,5 @@
 import { type Request, type Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { EntityID } from '~/_shared/domain';
 import { ListNotificationsUseCase } from '~/notification/application';
 import { listNotificationsValidated } from './validator';
 

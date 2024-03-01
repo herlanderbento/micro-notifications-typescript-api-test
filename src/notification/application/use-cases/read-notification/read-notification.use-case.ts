@@ -1,11 +1,7 @@
 import { IUseCase } from '~/_shared/application';
 import { ReadNotificationInput } from './read-notification.input';
 import { Notification, NotificationsRepository } from '~/notification/domain';
-import {
-  // NotAllowedError,
-  NotFoundError,
-  // NotficationNotFoundError,
-} from '~/_shared/domain';
+import { NotFoundError } from '~/_shared/domain';
 import { NotificationOutput, NotificationOutputMapper } from '../../common';
 
 export class ReadNotificationUseCase
@@ -23,7 +19,7 @@ export class ReadNotificationUseCase
     }
 
     if (input.recipientId !== notification.recipientId.toString()) {
-      throw new NotFoundError(input.recipientId, Notification)
+      throw new NotFoundError(input.recipientId, Notification);
     }
 
     notification.read();

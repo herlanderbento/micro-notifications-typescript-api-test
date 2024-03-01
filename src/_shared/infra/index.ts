@@ -3,3 +3,4 @@
 export * from './configs';
 export * from './db';
 export * from './routes';
+export * from './utils';
