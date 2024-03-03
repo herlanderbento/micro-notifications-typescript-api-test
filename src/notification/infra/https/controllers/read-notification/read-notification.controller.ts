@@ -3,6 +3,7 @@ import { ReadNotificationUseCase } from '~/notification/application';
 import { StatusCodes } from 'http-status-codes';
 import { readNotificationValidated } from './validator';
 import { executeSafely } from '~/_shared/infra';
+import { Queue } from '~/_shared/domain';
 
 export class ReadNotificationController {
   constructor(

@@ -11,8 +11,7 @@ export async function executeSafely(
   next: NextFunction
 ) {
   try {
-    const result = await asyncFunction(request, response, next);
-    return result;
+    return await asyncFunction(request, response, next);
   } catch (error) {
     next(error);
     return null;
