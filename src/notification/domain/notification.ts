@@ -4,8 +4,9 @@ export interface NotificationProps {
   recipientId: EntityID;
   title: string;
   content: string;
-  readAt?: Date | null;
+  isRead?: Boolean | null;
   createdAt: Date;
+  updatedAt: Date
 }
 
 export class Notification extends AggregateRoot<NotificationProps> {
@@ -25,27 +26,37 @@ export class Notification extends AggregateRoot<NotificationProps> {
     return this.props.content;
   }
 
-  get readAt() {
-    return this.props.readAt;
+  get isRead() {
+    return this.props.isRead;
   }
 
   get createdAt() {
     return this.props.createdAt;
   }
 
+  get updatedAt() {
+    return this.props.updatedAt;
+  }
+
   read() {
-    this.props.readAt = new Date();
+    this.props.isRead = true;
+    this.touch()
+  }
+
+  touch(){
+    this.props.updatedAt = new Date()
   }
 
   static create(
-    props: Optional<NotificationProps, 'createdAt'>,
+    props: Optional<NotificationProps, 'createdAt' | 'updatedAt'>,
     id?: EntityID
   ): Notification {
     const notification = new Notification(
       {
         ...props,
         createdAt: props.createdAt ?? new Date(),
-        readAt: props.readAt ?? null,
+        updatedAt: props.updatedAt ?? new Date(),
+        isRead: props.isRead ?? false,
       },
       id
     );
@@ -59,8 +70,10 @@ export class Notification extends AggregateRoot<NotificationProps> {
       recipientId: this.props.recipientId.toString(),
       title: this.props.title,
       content: this.props.content,
-      readAt: this.props.readAt,
+      isRead: this.props.isRead,
       createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
+
     };
   }
 }

@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import {
+  deleteNotificationFactory,
   listNotificationsFactory,
   readNotificationFactory,
   sendNotificationFactory,
@@ -21,5 +22,12 @@ notificationRoutes.patch(
 notificationRoutes.get('/:recipientId', (req, res) => {
   listNotificationsFactory.handle(req, res);
 });
+
+notificationRoutes.delete(
+  '/:id',
+  (req, res, next) => {
+    deleteNotificationFactory.handle(req, res, next);
+  }
+);
 
 export { notificationRoutes };

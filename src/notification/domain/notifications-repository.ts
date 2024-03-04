@@ -7,7 +7,7 @@ import {
 import { Notification } from './notification';
 
 export interface NotificationsRepository
-  extends Pick<IRepository<Notification>, 'insert' | 'update' | 'findById'> {
+  extends Omit<IRepository<Notification>, 'findAll' | 'bulkInsert'> {
   findManyByRecipientId(
     recipientId: string,
     props: NotificationSearchParams

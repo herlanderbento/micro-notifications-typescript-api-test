@@ -11,7 +11,7 @@ import { NotificationModelMapper } from "./notification-model.mapper";
 
 export class NotificationMongoRepository implements NotificationsRepository {
   constructor(private notificationModel: typeof NotificationModel) {}
-
+ 
   async insert(entity: Notification): Promise<void> {
     const modelProps = NotificationModelMapper.toModel(entity);
     await this.notificationModel.create(modelProps);
@@ -64,6 +64,10 @@ export class NotificationMongoRepository implements NotificationsRepository {
       perPage: props.perPage,
       total: count,
     });
+  }
+
+  async delete(id: string): Promise<void> {
+    await this.notificationModel.findByIdAndDelete(id)
   }
 
   getEntity(): new (...args: any[]) => Notification {

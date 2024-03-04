@@ -1,7 +1,6 @@
-import { FlattenMaps, Types } from "mongoose";
-import { EntityID } from "~/_shared/domain";
-import { Notification, NotificationProps } from "~/notification/domain";
-
+import { Types } from 'mongoose';
+import { EntityID } from '~/_shared/domain';
+import { Notification, NotificationProps } from '~/notification/domain';
 
 export type INotificationModelDocument = {
   _id: Types.UUID;
@@ -14,8 +13,9 @@ export class NotificationModelMapper {
       recipientId: entity.recipientId.toString(),
       title: entity.title,
       content: entity.content,
-      readAt: entity.readAt,
+      isRead: entity.isRead,
       createdAt: entity.createdAt,
+      updatedAt: entity.updatedAt,
     };
   }
 
@@ -25,8 +25,9 @@ export class NotificationModelMapper {
         recipientId: raw.recipientId,
         title: raw.title,
         content: raw.content,
-        readAt: raw.readAt,
+        isRead: raw.isRead,
         createdAt: raw.createdAt,
+        updatedAt: raw.updatedAt,
       },
       new EntityID(String(raw._id))
     );

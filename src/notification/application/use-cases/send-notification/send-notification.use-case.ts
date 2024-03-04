@@ -17,7 +17,7 @@ export class SendNotificationUseCase
 
     await this.notificationRepository.insert(notification);
 
-    await this.queue.publish('SendNotification', notification);
+    await this.queue.publish('NOTIFICATION', notification);
 
     return NotificationOutputMapper.toOutput(notification);
   }
