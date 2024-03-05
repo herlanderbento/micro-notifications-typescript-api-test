@@ -21,3 +21,17 @@ services:
       MONGO_ROOT_USERNAME: admin
       MONGO_ROOT_PASSWORD: admin
       MONGO_DATABASE: micro-notification-mongodb
+
+  rabbitmq:
+    image: "rabbitmq:3.8-management"
+    container_name: "micro-notification-rabbitmq"
+    ports:
+      - "5672:5672" 
+      - "15672:15672" 
+    environment:
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+
+volumes:
+  rabbitmq_data:
+    driver: local

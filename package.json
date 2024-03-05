@@ -13,7 +13,6 @@
     "cti:make": "sh ./cti.sh",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down"
-
   },
   "keywords": [],
   "author": "",
@@ -74,6 +73,7 @@
     "nodemailer": "^6.9.9",
     "prettier": "^2.6.2",
     "reflect-metadata": "^0.1.13",
+    "socket.io": "^4.7.4",
     "supertest": "^6.3.3",
     "swagger-ui-express": "^4.4.0",
     "ts-jest": "^29.1.1",

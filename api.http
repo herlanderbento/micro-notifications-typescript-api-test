@@ -16,3 +16,6 @@ Content-Type: application/json
 ###
 GET   http://localhost:3005/v1/notifications/1b327ed1-a2bc-4cce-9d37-38a8964ce0ed?perPage=2&page=1
 Content-Type: application/json
+
+###
+POST  http://localhost:3005/test-notification

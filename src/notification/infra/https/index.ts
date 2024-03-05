@@ -2,3 +2,4 @@
 
 export * from './controllers';
 export * from './routes';
+export * from './socket-io';

@@ -54,7 +54,8 @@ npm run dev
 
 Endpoint for see the project
 
-- `http://localhost:3000` the address of project
+- `http://localhost:3005` the address of project
+- `http://localhost:15672` default address for the RabbitMQ control panel (user: guest, password: guest).
 
 - `[GET]/v1/api-docs` the documentation of project
 - `[GET]/v1/docs` the documentation redocly
@@ -85,7 +86,7 @@ Endpoint for see the project
 
 ## TypeScript application development (Core) by modules
 
-- Account;
+- Notification;
   <br />
 
 ## CI (Continuous Integration)

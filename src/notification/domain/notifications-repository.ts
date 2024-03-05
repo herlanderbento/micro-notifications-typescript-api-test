@@ -1,9 +1,4 @@
-import {
-  IRepository,
-  PaginationParams,
-  SearchParams,
-  SearchResult,
-} from '~/_shared/domain';
+import { IRepository, SearchParams, SearchResult } from '~/_shared/domain';
 import { Notification } from './notification';
 
 export interface NotificationsRepository
