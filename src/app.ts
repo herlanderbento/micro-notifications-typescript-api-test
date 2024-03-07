@@ -12,7 +12,7 @@ import swaggerDocs from "~/docs/swagger.json";
 
 import { errors } from "./_shared/domain/errors";
 import { versions } from "./_shared/infra/configs/versions";
-import { router } from "./_shared/infra/routes";
+import { routes } from "./_shared/infra/routes";
 
 const app = express();
 
@@ -28,9 +28,7 @@ app.get('/v1/docs', (request: Request, response: Response) => {
   return response.sendFile(process.cwd() + '/src/docs/index.html');
 });
 
-app.use(versions.current, router);
+app.use(versions.current, routes);
 app.use(errors);
-
-
 
 export default app;

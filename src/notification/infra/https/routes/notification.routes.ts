@@ -6,7 +6,7 @@ import {
   sendNotificationFactory,
 } from '../controllers';
 
-const notificationRoutes = Router({ mergeParams: true });
+const notificationRoutes = Router();
 
 notificationRoutes.post('/', (req, res) =>
   sendNotificationFactory.handle(req, res)

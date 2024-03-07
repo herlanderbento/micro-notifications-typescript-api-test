@@ -17,7 +17,7 @@ export const NotificationModel = model<INotificationModelDocument>(
       type: String,
       required: true,
     },
-    readAt: Date,
+    isRead: Boolean,
     createdAt: Date,
   })
 );

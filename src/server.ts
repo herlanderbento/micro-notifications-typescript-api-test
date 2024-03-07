@@ -6,7 +6,10 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: process.env.BASE_URL_FRONTEND,
+    origin: [
+      process.env.FRONTEND_BASE_URL_B2B,
+      process.env.FRONTEND_BASE_URL_B2C,
+    ],
   },
 });
 
@@ -26,8 +29,7 @@ io.on('connection', (socket: Socket) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`http://localhost:${PORT}/v1`);
-  console.log(` === SERVER IS RUNNING ON PORT [${PORT}] === `);
+  console.log(` === SERVER IS RUNNING, http://localhost:${PORT}/v1 === `);
 });
 
 export { io };

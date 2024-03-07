@@ -73,7 +73,6 @@ export class Notification extends AggregateRoot<NotificationProps> {
       isRead: this.props.isRead,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
-
     };
   }
 }

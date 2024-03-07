@@ -1,12 +1,3 @@
-import Router from "express";
-import { notificationRoutes } from "~/notification/infra";
+// created from 'create-ts-index'
 
-const router = Router();
-
-router.get("/", (_, res) => {
-  return res.json("Welcome to the Mirantes Notification api.");
-});
-
-router.use("/notifications", notificationRoutes);
-
-export { router };
+export * from './routes';
