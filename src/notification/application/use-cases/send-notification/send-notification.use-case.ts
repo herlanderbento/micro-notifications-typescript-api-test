@@ -2,14 +2,14 @@ import { IUseCase } from '~/_shared/application';
 import { SendNotificationInput } from './send-notification.input';
 import { Notification, NotificationsRepository } from '~/notification/domain';
 import { NotificationOutput, NotificationOutputMapper } from '../../common';
-import { Queue } from '~/_shared/domain';
+import { NotificationSocketIO } from '~/notification/infra';
 
 export class SendNotificationUseCase
   implements IUseCase<SendNotificationInput, SendNotificationOutput>
 {
   constructor(
     private notificationRepository: NotificationsRepository,
-    private queue: Queue
+    private notificationSocketIo: NotificationSocketIO
   ) {}
 
   async execute(input: SendNotificationInput): Promise<SendNotificationOutput> {
@@ -17,9 +17,11 @@ export class SendNotificationUseCase
 
     await this.notificationRepository.insert(notification);
 
-    await this.queue.publish('NOTIFICATION', notification);
+    const notificationOutput = NotificationOutputMapper.toOutput(notification);
 
-    return NotificationOutputMapper.toOutput(notification);
+    this.notificationSocketIo.emitNotification(notificationOutput);
+
+    return notificationOutput;
   }
 }
 

@@ -29,7 +29,7 @@ io.on('connection', (socket: Socket) => {
 });
 
 server.listen(PORT, () => {
-  console.log(` === SERVER IS RUNNING, http://localhost:${PORT}/v1 === `);
+  console.log(`Server is running at http://localhost:${PORT}`);
 });
 
 export { io };

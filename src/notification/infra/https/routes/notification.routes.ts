@@ -3,14 +3,9 @@ import {
   deleteNotificationFactory,
   listNotificationsFactory,
   readNotificationFactory,
-  sendNotificationFactory,
 } from '../controllers';
 
 const notificationRoutes = Router();
-
-notificationRoutes.post('/', (req, res) =>
-  sendNotificationFactory.handle(req, res)
-);
 
 notificationRoutes.patch(
   '/:notificationId/read/:recipientId',

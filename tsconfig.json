@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "es2016",
     "module": "commonjs",
     "esModuleInterop": true,
     "strictPropertyInitialization": false,
@@ -10,19 +10,15 @@
     "resolveJsonModule": true,
     "strict": true,
     "skipLibCheck": true,
-    "removeComments": true,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "outDir": "./dist",
-    "incremental": true,
-    "strictNullChecks": true,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false,
     "baseUrl": ".",
+    "outDir": "./dist",
     "paths": {
-      "~/*": ["./src/*"]
-    },
-    "types": ["vitest/globals"]
-  }
+      "~/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "./src/**/*"
+  ],
 }

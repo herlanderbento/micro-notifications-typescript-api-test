@@ -13,6 +13,7 @@ export class NotificationMongoRepository implements NotificationsRepository {
   constructor(private notificationModel: typeof NotificationModel) {}
  
   async insert(entity: Notification): Promise<void> {
+
     const modelProps = NotificationModelMapper.toModel(entity);
     await this.notificationModel.create(modelProps);
   }
